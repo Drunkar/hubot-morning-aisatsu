@@ -17,7 +17,7 @@
 cronJob = require('cron').CronJob
 
 config =
-  room: process.env.HUBOT_AISATSU_ROOM
+  roomId: process.env.HUBOT_AISATSU_ROOM_ID
   people: JSON.parse(process.env.HUBOT_AISATSU_PEOPLE ? '[]')
 
 MORNING_AISATSUES = [ \
@@ -46,8 +46,8 @@ MORNING_AISATSUES = [ \
 module.exports = (robot) ->
   # *(sec) *(min) *(hour) *(day) *(month) *(day of the week)
   new cronJob('0 * * * * 1,2,3,4,5', () ->
-    unless config.room?
-      robot.logger.error 'process.env.HUBOT_AISATSU_ROOM is not defined'
+    unless config.roomId?
+      robot.logger.error 'process.env.HUBOT_AISATSU_ROOM_ID is not defined'
       return
     unless config.people?
       robot.logger.error 'process.env.HUBOT_AISATSU_PEOPLE is not defined'
@@ -55,6 +55,6 @@ module.exports = (robot) ->
 
     ai = Math.floor(Math.random() * MORNING_AISATSUES.length)
     pi = Math.floor(Math.random() * config.people.length)
-    envelope = {room: config.room}
+    envelope = room: config.roomId
     robot.send envelope, config.people[pi] + ' ' + MORNING_AISATSUES[ai]
   ).start()
