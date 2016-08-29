@@ -14,7 +14,7 @@
   "author": "Drunkar",
   "license": "MIT",
   "dependencies": {
-    "cron"
+    "cron": "~1.1.0"
   },
   "devDependencies": {
   },
