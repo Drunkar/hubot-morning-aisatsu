@@ -56,5 +56,5 @@ module.exports = (robot) ->
     ai = Math.floor(Math.random() * MORNING_AISATSUES.length)
     pi = Math.floor(Math.random() * config.people.length)
     envelope = room: config.room
-    robot.send envelope config.people[pi] + ' ' + MORNING_AISATSUES[ai]
+    robot.send envelope, config.people[pi] + ' ' + MORNING_AISATSUES[ai]
   ).start()
