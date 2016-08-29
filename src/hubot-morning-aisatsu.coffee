@@ -17,7 +17,7 @@
 cronJob = require('cron').CronJob
 
 config =
-  roomId: process.env.HUBOT_AISATSU_ROOM
+  room: process.env.HUBOT_AISATSU_ROOM
   people: JSON.parse(process.env.HUBOT_AISATSU_PEOPLE ? '[]')
 
 MORNING_AISATSUES = [ \
@@ -46,8 +46,8 @@ MORNING_AISATSUES = [ \
 module.exports = (robot) ->
   # *(sec) *(min) *(hour) *(day) *(month) *(day of the week)
   new cronJob('0 * * * * 1,2,3,4,5', () ->
-    unless config.roomId?
-      robot.logger.error 'process.env.HUBOT_AISATSU_ROOM_ID is not defined'
+    unless config.room?
+      robot.logger.error 'process.env.HUBOT_AISATSU_ROOM is not defined'
       return
     unless config.locale?
       robot.logger.error 'process.env.HUBOT_AISATSU_LOCALE is not defined'
