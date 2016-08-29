@@ -49,9 +49,6 @@ module.exports = (robot) ->
     unless config.room?
       robot.logger.error 'process.env.HUBOT_AISATSU_ROOM is not defined'
       return
-    unless config.locale?
-      robot.logger.error 'process.env.HUBOT_AISATSU_LOCALE is not defined'
-      return
     unless config.people?
       robot.logger.error 'process.env.HUBOT_AISATSU_PEOPLE is not defined'
       return
