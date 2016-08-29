@@ -45,7 +45,7 @@ MORNING_AISATSUES = [ \
 
 module.exports = (robot) ->
   # *(sec) *(min) *(hour) *(day) *(month) *(day of the week)
-  new cronJob('0 * * * * 1,2,3,4,5', () ->
+  new cronJob('0 50 9 * * 1,2,3,4,5', () ->
     unless config.roomId?
       robot.logger.error 'process.env.HUBOT_AISATSU_ROOM_ID is not defined'
       return
